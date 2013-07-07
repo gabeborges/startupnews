@@ -58,5 +58,8 @@ module Startupnews
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Devise instructions for HEROKU
+    config.assets.intilialize_on_precompile = false
   end
 end
