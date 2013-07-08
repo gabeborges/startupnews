@@ -1,0 +1,32 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+     <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+       <span class="icon-bar"></span>
+     </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <%= link_to "StartupNews", root_path, class: "brand" %>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><%= link_to "News", root_path %></li>
+		    </ul>
+		    <ul class="nav pull-right">
+          <% if user_signed_in? %>
+            <li><button class="btn btn-primary" type="button"><%= link_to 'Enviar um Link', new_post_path %></button></li>
+            <li><%= link_to "Editar Perfil", edit_user_registration_path  %></li>
+            <li><%= link_to "Sair", destroy_user_session_path, method: :delete  %></li>
+          <% else %>
+            <li><%= link_to 'Registrar-se', new_user_registration_path %></li>
+            <li><%= link_to "Entrar", new_user_session_path %></li>
+
+          <% end %>
+		    </ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>

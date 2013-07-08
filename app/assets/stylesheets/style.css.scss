@@ -1,0 +1,39 @@
+/*$baseFontFamily:Oxygen;
+@import url(http://fonts.googleapis.com/css?family=Oxygen);*/
+
+/* xxxx Generals CSS xxxx*/
+/*$navbarBackgroundHighlight: white;
+$navbarBackground: white;
+$btnPrimaryBackground: red;*/
+
+@import 'bootstrap';
+body{
+    padding-top: 60px;
+}
+a { color:#4183c4; text-decoration: none;}
+a:hover { color:#4183c4; text-decoration: underline;}
+
+@import 'bootstrap-responsive';
+/*.navbar-inner{
+    @include box-shadow(none !important);
+    border: 0;
+}*/
+.footer{
+    margin-top: 50px;
+    color: $grayLight;
+    a{
+        color: $gray;
+    }
+}
+
+/* xxxxxxxxxxxxxx POST STYLE xxxxxxxxxxxxxx*/
+ul, ul li { list-style: none; margin-left: 0;}
+.all-post>li { padding: 0 0 15px 0; margin: 0 0 15px; overflow: hidden; border-bottom: 1px solid #eee;}
+h3.post-title { font-size: 20px; margin: 0; padding: 0; line-height: 20px;}
+.inner-details {margin: 0; font-size: 11px; color: #999999;}
+.author{ float: left; }
+.user-options { float:right; ul li { display: inline; margin-left: 5px;} }
+
+/* xxxxxxxxxxxxxxx BANNER xxxxxxxxxxxxxxxxx*/
+#banner-lat{ width: 300px; height: 250px; background-color: #f7f7f7; margin: 0 auto;}
+.span4{ padding-top:30px; padding-bottom:50px; /*border: 1px solid #ebebeb; */}
