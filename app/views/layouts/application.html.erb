@@ -4,32 +4,24 @@
   <title>Startupnews</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+	<%= render 'layouts/header' %>
+	
+	<div class="container">
+
 	<div id="flash">
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
 	</div>
 
-	<div id="content">
 		<%= yield %>
 	</div>
 
-	<div id="login">
-		<% if user_signed_in? %>
-			<ul>
-				<li>Hello <%= current_user.email %>!</li>
-				<li><%= link_to 'Submit Link', new_post_path %></li>
-				<li><%= link_to 'Sign out', destroy_user_session_path, :metod => :delete %></li>
-			</ul>
-		<% else %>
-			<ul>
-				<li><%= link_to 'Sign up', new_user_registration_path %></li>
-				<li><%= link_to 'Sign_in', new_user_session_path %></li>
-			</ul>
-		<% end %>
-	</div>
+	<%= render 'layouts/footer' %>
 
 </body>
 </html>
