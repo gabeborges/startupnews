@@ -1,4 +1,4 @@
-Gemfile:"ruby:'1.9.3p392'"
+Gemfile:"ruby:'1.9.3'"
 
 source 'https://rubygems.org'
 
