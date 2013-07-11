@@ -1,31 +1,32 @@
-<div class="row-fluid">
-  <div class="span8">
-    <ul class="all-post">
-      <% @posts.each do |post| %>
-          <li class="post">
-            <h3 class="post-title"><%= link_to post.title, post.url %></h3>
-            <div class="inner-details">
-              <div class="author">Postado por <%= post.user.username %> em </div>
-              <div class="user-options">  
-                <% if user_signed_in? %>
-                  <ul>
-                    <li><%= link_to 'Editar', edit_post_path(post) %></li>
-                    <li><%= link_to 'Deletar', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                  </ul>
-                <% else %>
+<div class="span8">
+  <ul class="all-post">
+    <% @posts.each do |post| %>
+        <li class="post">
+          <h4 class="post-title"><%= link_to post.title, post.url %></h4>
+          <div class="post-url"><%= link_to  post.url, post.url %></div>
+          <div class="inner-details">
+            <div class="author">
+              enviado a <strong><%= time_ago_in_words post.created_at %></strong> por <%= post.user.username %>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+              
+              <% if post.comments.count >= 1%>
+                <%= link_to 'Comentários', post_path(post) %>
+              <% else %>
+                <%= link_to post_path(post) do %>
+                  Comentar
                 <% end %>
-              </div>
-          </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="span4">
-    <div id="banner-lat">
-
-    </div>
-  </div>
-
+              <% end %>
+                
+            </div>
+            <div class="user-options">  
+              <% if user_signed_in? %>
+                <ul>
+                  <li><%= link_to 'Editar', edit_post_path(post) %></li>
+                  <li><%= link_to 'Deletar', post, method: :delete, data: { confirm: 'Você tem certeza? Esta ação é irreversível!' } %></li>
+                </ul>
+              <% else %>
+              <% end %>
+            </div>
+        </li>
+    <% end %>
+  </ul>
 </div>
-
-

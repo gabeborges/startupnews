@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Startupnews</title>
+  <title>StartupNews</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
@@ -12,13 +12,23 @@
 	<%= render 'layouts/header' %>
 	
 	<div class="container">
+		<div class="row-fluid">
 
-	<div id="flash">
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
-	</div>
+			<% [:notice, :error, :alert].each do |level| %>
+			  <% unless flash[level].blank? %>
+			    <div data-alert="alert" class="alert alert-<%= level %> fade in">
+			      <a class="close" data-dismiss="alert" href="#">&times;</a>
+			      <%= content_tag :p, flash[level] %>
+			    </div>
+			  <% end %>
+			<% end %>
 
-		<%= yield %>
+			<%= yield %>
+
+			<%= render 'layouts/sidebar' %>
+
+		</div>
+
 	</div>
 
 	<%= render 'layouts/footer' %>
