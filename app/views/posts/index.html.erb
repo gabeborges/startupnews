@@ -9,7 +9,9 @@
               <%= post.user.username %> publicou a <strong><%= time_ago_in_words post.created_at %></strong>
               <span class="separator">|</span>
               <% if post.comments.count >= 1%>
-                <%= link_to 'Comentários', post_path(post) %>
+                <%= link_to post_path(post) do %>
+                  <%= post.comments.count %> Comentário(s) 
+                <% end %> 
               <% else %>
                 <%= link_to post_path(post) do %>
                   Comentar
