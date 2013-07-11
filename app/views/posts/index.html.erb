@@ -6,8 +6,8 @@
           <div class="post-url"><%= link_to  post.url, post.url %></div>
           <div class="inner-details">
             <div class="author">
-              enviado a <strong><%= time_ago_in_words post.created_at %></strong> por <%= post.user.username %>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-              
+              <%= post.user.username %> publicou a <strong><%= time_ago_in_words post.created_at %></strong>
+              <span class="separator">|</span>
               <% if post.comments.count >= 1%>
                 <%= link_to 'Comentários', post_path(post) %>
               <% else %>

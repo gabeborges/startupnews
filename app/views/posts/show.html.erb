@@ -4,7 +4,7 @@
   <h4 class="post-title"><%= link_to @post.title, @post.url %></h4>
   <span class="post-url"><%= link_to  @post.url, @post.url %></span>
   <div class="inner-details">
-    <div class="author">enviado a <strong><%= time_ago_in_words @post.created_at %></strong> por <%= @post.user.username %></div>
+    <div class="author"><%= @post.user.username %> publicou a <strong><%= time_ago_in_words @post.created_at %></strong></div>
     <div class="user-options">  
       <% if user_signed_in? %>
         <ul>
