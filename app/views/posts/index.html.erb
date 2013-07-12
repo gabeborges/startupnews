@@ -4,13 +4,32 @@
             
           
     <% @posts.each do |post| %>
+        
+
         <li class="post">
-            
+          <!-- <% if current_user && current_user.votes.where(:post_id => post.id, :up => true).present? %>
+            *
+          <% else %>
+            <%= link_to "+", votes_path(:vote => {:post_id => post.id, :up => true}), :method => :post %>
+          <% end %>
+          <% if current_user && current_user.votes.where(:post_id => post.id, :up => true).present? %>
+            *
+          <% else %>
+            <%= link_to "-", votes_path(:vote => {:post_id => post.id, :up => false}), :method => :post %>
+          <% end %>
+          <p>Up: <%= post.votes.where(:up => true).count %></p>
+          <p>Down: <%= post.votes.where(:up => false).count %></p> -->
+          <div class="vote-count">
+          <p><%= link_to "+", votes_path(:vote => {:post_id => post.id, :up => true}), :method => :post %></p>
+          <p><%= post.votes.where(:up => true).count - post.votes.where(:up => false).count %></p>
+          <p><%= link_to "-", votes_path(:vote => {:post_id => post.id, :up => false}), :method => :post %></p>
+          </div>
+          <div class="post-post">
           <h4 class="post-title"><%= link_to post.title, post.url %></h4>
           <div class="post-url"><%= link_to  post.url, post.url %></div>
           <div class="inner-details">
             <div class="author">
-              <%= post.user.username %> publicou a <strong><%= time_ago_in_words post.created_at %></strong>
+              <p><%= post.user.username %> publicou a <strong><%= time_ago_in_words post.created_at %></strong>
               <span class="separator">|</span>
               <% if post.comments.count >= 1%>
                 <%= link_to post_path(post) do %>
@@ -21,7 +40,7 @@
                   Comentar
                 <% end %>
               <% end %>
-                
+              </p>
             </div>
             <div class="user-options">  
               <% if user_signed_in? %>
@@ -32,6 +51,7 @@
               <% else %>
               <% end %>
             </div>
+          </div>
         </li>
     <% end %>
   </ul>

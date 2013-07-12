@@ -26,24 +26,6 @@ a:hover { color:#4183c4; text-decoration: underline;}
     }
 }
 
-/* xxxxxxxxxxxxxx POST STYLE xxxxxxxxxxxxxx*/
-ul, ul li { list-style: none; margin-left: 0;}
-.all-post>li { padding: 0 0 15px 0; margin: 0 0 15px; overflow: hidden; border-bottom: 1px solid #eee;}
-h4.post-title { font-size: 18px; margin: 0; padding: 0; line-height: 20px;}
-.post-url {font-size: 11px; line-height: 15px; color: #999; a {color:#999;}}
-.inner-details {margin: 0; font-size: 11px; color: #999999; line-height: 15px;}
-.author{ float: left; }
-.user-options { float:right; ul li { display: inline; margin-left: 5px;} }
-.separator {margin: 0 5px 0 5px;}
-
-/* xxxxxxxxxxxxxx COMMENTS xxxxxxxxxxxxxxxx*/
-.comments-all {margin: 30px 0 60px 0;}
-.comments{padding:15px 0 10px 0; clear: left; width: 100%;}
-.comment-description{font-size: 11px; color: #999; float:left;}
-.comment-option{float:right; font-size: 11px;}
-.comment-body{font-size: 13px; color: #333; float:left; clear:both; width: 100%; line-height: 16px;}
-.comment-txt-area{width: 50%; font-size: 13px;}
-
 /* xxxxxxxxxxxxxxx BANNER xxxxxxxxxxxxxxxxx*/
 #banner-lat{ width: 300px; height: 250px; background-color: #f7f7f7; margin: 0 auto;}
 .span4{ padding-top:30px; padding-bottom:50px; /*border: 1px solid #ebebeb; */}

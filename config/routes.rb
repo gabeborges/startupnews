@@ -3,12 +3,16 @@ Startupnews::Application.routes.draw do
 
   root :to => 'posts#index'
   
+  resources :votes
+
   resources :posts do
     resources :comments
+    resources :votes
   end
 
   resources :users do
     resources :comments
+    resources :votes
   end
 
   # The priority is based upon order of creation:
