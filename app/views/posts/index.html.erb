@@ -7,18 +7,7 @@
         
 
         <li class="post">
-          <!-- <% if current_user && current_user.votes.where(:post_id => post.id, :up => true).present? %>
-            *
-          <% else %>
-            <%= link_to "+", votes_path(:vote => {:post_id => post.id, :up => true}), :method => :post %>
-          <% end %>
-          <% if current_user && current_user.votes.where(:post_id => post.id, :up => true).present? %>
-            *
-          <% else %>
-            <%= link_to "-", votes_path(:vote => {:post_id => post.id, :up => false}), :method => :post %>
-          <% end %>
-          <p>Up: <%= post.votes.where(:up => true).count %></p>
-          <p>Down: <%= post.votes.where(:up => false).count %></p> -->
+          
           <div class="vote-count">
           <p><%= link_to "+", votes_path(:vote => {:post_id => post.id, :up => true}), :method => :post %></p>
           <p><%= post.votes.where(:up => true).count - post.votes.where(:up => false).count %></p>
