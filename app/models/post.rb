@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
   attr_accessible :title, :url
 
   has_many :comments, dependent: :destroy
+  has_many :votes
 end
