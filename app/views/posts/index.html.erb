@@ -11,14 +11,11 @@
           <p><%= link_to "+", votes_path(:vote => {:post_id => post.id, :up => true}), :method => :post %></p>
           <p><%= post.votes.where(:up => true).count - post.votes.where(:up => false).count %></p>
           <p><%= link_to "-", votes_path(:vote => {:post_id => post.id, :up => false}), :method => :post %></p>
-
           </div>
+          
           <div class="post-post">
-
           <h4 class="post-title"><%= link_to post.title, post.url %></h4>
-      
           <div class="post-url"><%= link_to  post.url, post.url %></div>
-
           <div class="inner-details">
             <div class="author">
               <p><%= post.user.username %> publicou a <strong><%= time_ago_in_words post.created_at %> </strong> atrás
