@@ -1,18 +1,14 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :get_post, :only => [:edit, :update, :destroy]
+  before_filter :get_post, :only => [:show, :edit, :update, :destroy]
   
   def get_post 
     @post = Post.find(params[:id])
   end
 
-  def rank
-    @post = Post.find(params[:id])
-  end
-
   def index
-    @posts = Post.all(:order => "")
-    #@posts = Post.all(:order => "id desc")
+    @posts = Post.all(:order => 'rank desc')
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -20,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
@@ -36,10 +31,8 @@ class PostsController < ApplicationController
     end
   end
 
-  #Post are not editable
-  #def edit
-    #@post = Post.find(params[:id])
-  #end
+  def edit
+  end
 
   def create
     @post = Post.new(params[:post])
@@ -55,24 +48,24 @@ class PostsController < ApplicationController
     end
   end
 
-  #Post are not editable
-  #def update
-    #@post = Post.find(params[:id])
-   # respond_to do |format|
-    #  if @post.user != current_user
-     #   format.html { redirect_to @post, notice: 'That post is not yours to edit'}
-      #elsif @post.update_attributes(params[:post])
-      #  format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-      #  format.json { head :no_content }
-      #else        
-      #  format.html { render action: "edit" }
-      #  format.json { render json: @post.errors, status: :unprocessable_entity }
-      #end
-    #end
-  #end
+  def update
+    @post = Post.find(params[:id])
+
+    respond_to do |format|
+      if @post.user != current_user
+        format.hteml { redirect_to @post, notice: 'That post is not yours to edit'}
+      elsif @post.update_attributes(params[:post])
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { head :no_content }
+      else        
+        format.html { render action: "edit" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
-    #@post = Post.find(params[:id])
+
     if @post.user != current_user
       flash[:notice] = 'That post is not yours to destroy'
       respond_to do |format|
@@ -86,5 +79,6 @@ class PostsController < ApplicationController
       end
     end
   end
+
 end
 
