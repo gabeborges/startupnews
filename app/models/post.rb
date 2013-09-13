@@ -8,14 +8,13 @@ class Post < ActiveRecord::Base
   has_many :votes
 
  
-
  def update_rank
 	ephoc = DateTime.new(1970, 1, 1)
-    date = self.created_at
-    td = date - ephoc 
-    ranking = td.days * 86400
-    self.rank = ranking
-   	save
+  date = self.created_at
+  td = date - ephoc 
+  ranking = td.days * 86400 + td.seconds
+  self.rank = ranking
+  save
  end
-
+ 
 end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :get_post, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_post, :only => [:show, :edit, :update, :destroy, :vote_up, :vote_down]
   
   def get_post 
     @post = Post.find(params[:id])
@@ -78,6 +78,23 @@ class PostsController < ApplicationController
         format.json { head :no_content }
       end
     end
+  end
+
+  def vote_up
+    vote = Vote.create
+    post = Post.find(params[:id])
+    vote = post.rank 
+    vote += 2800
+    save
+  end
+ 
+  def vote_down
+    post = Post.find(params[:id])
+    post.rank -= 2800
+    vote = Vote.create(params[:vote][:id])
+    vote.post = post
+    vote.save
+    post.save
   end
 
 end
